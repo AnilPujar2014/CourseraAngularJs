@@ -1,0 +1,23 @@
+/*font-weight: normal|bold|bolder|lighter|number|initial|inherit;*/
+
+thead.bold {
+	font-weight: bold;
+}
+p.italic {
+	font-weight: italic;
+}
+p.normal {
+	font-weight: normal;
+}
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+.sky {
+    background-color:lightblue;
+}
+.tomato {
+    background-color:coral;
+}

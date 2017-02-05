@@ -1,10 +1,296 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Coursera</title>
-  </head>
-  <body>
-    <h1>Hello coursera  :)</h1>
-  </body>
+<html lang="en" ng-app="angularCat">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/cat.css"/>
+	<script src="js/AJS/angular-1.5.8/angular.min.js"></script>
+	<script src="js/AJS/angular-1.5.8/angular-sanitize.js"></script>
+	<script src="js/Cat/cat-directive.js"></script>
+<head>
+	<title>AngularJs Directives</title>
+</head>
+<body>
+	<div ng-controller="CatHomeCtrl">
+		<form name="ngDirectiveForm">
+		<h1>AngualrJs Directives</h1>	
+		<table>
+			<thead class="bold">
+				<tr>
+					<td>Directive</td><td>Description</td><td>Example</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ng-app</td>
+					<td>Defines the root element of an application.</td>
+					<td>{{ngDirective.ngApp}}</td>
+				</tr>
+				<tr>
+					<td>ng-bind</td>
+					<td>Binds the content of an HTML element to application data.</td>
+					<td><span ng-bind="ngDirective.ngBind"></span></td>
+				</tr>
+				<tr>
+					<td>ng-bind-html</td>
+					<td>Binds the innerHTML of an HTML element to application data, and also removes dangerous code from the HTML string.</td>
+					<td><span ng-bind-html="ngDirective.ngBindHtml"></span></td>
+				</tr>
+				<tr>
+					<td>ng-bind-template</td>
+					<td>Specifies that the text content should be replaced with a template.</td>
+					<td><span ng-bind-template="{{ngDirective.ngBindTemplate.firstName}} {{ngDirective.ngBindTemplate.lastName}}"></span></td>
+				</tr>
+				<tr>
+					<td>ng-blur</td>
+					<td>Specifies a behavior on blur events. </td>
+					<td><button ng-blur="ngDirective.ngBlurCount = ngDirective.ngBlurCount + 1" >ngBlur Count: {{ngDirective.ngBlurCount}}</button></br>Increases the value of the variable "count" every time the field loses focus. </td>
+				</tr>
+				<tr>
+					<td>ng-change</td>
+					<td>Specifies an expression to evaluate when content is being changed by the user.</td>
+					<td><input type="text" name="Test" ng-change="ngDirective.ngChangeFunc()" ng-model="ngDirective.ngChangeData" placeholder="Change the text"></br>The Field has changed {{ngDirective.ngChangeCount}} times</td>
+				</tr>
+				<tr>
+					<td>ng-checked</td>
+					<td>Specifies if an element is checked or not.</td>
+					<td>
+						<input type="checkbox" ng-model="ngDirective.ngChecked">Select All 
+						<input type="checkbox" ng-checked="ngDirective.ngChecked">Select 1 
+						<input type="checkbox" ng-checked="ngDirective.ngChecked">Select 2 
+						<input type="checkbox" ng-checked="ngDirective.ngChecked">Select 3 
+					</td>
+				</tr>
+				<tr>
+					<td>ng-class</td>
+					<td>Specifies CSS classes on HTML elements.</td>
+					<td>
+						Select option box color: 
+						<select ng-class="ngDirective.ngClass" ng-model="ngDirective.ngClass">
+							<option value="sky">Sky</option>
+							<option value="tomato">Tomato</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>ng-class-even</td>
+					<td>Same as ng-class, but will only take effect on even rows.</td>
+					<td>
+						<table>
+							<tr>
+								<td ng-repeat="x in [1,2,3,4,5,6,7,8]" ng-class-even="'sky'"> {{x}}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>ng-class-odd</td>
+					<td>Same as ng-class, but will only take effect on odd rows.</td>
+					<td>
+						<table>
+							<tr>
+								<td ng-repeat="x in [1,2,3,4,5,6,7,8]" ng-class-odd="'tomato'"> {{x}}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>ng-click</td>
+					<td>Specifies an expression to evaluate when an element is being clicked.</td>
+					<td><button ng-click="ngDirective.ngClickFunc()">Click Me</button>The button is clicked {{ngDirective.ngClickCount}} times.</td>
+				</tr>
+				<tr>
+					<td>ng-cloak</td>
+					<td>Prevents flickering when your application is being loaded.</td>
+					<td ng-cloak>{{ 5 + 5 }} + {{5}} = ?</td>
+				</tr>
+				<tr>
+					<td>ng-controller</td>
+					<td>Defines the controller object for an application.</td>
+					<td>Full Name: {{ngDirective.ngBindTemplate.firstName + " " + ngDirective.ngBindTemplate.lastName}}</td>
+				</tr>
+				<tr>
+					<td>ng-copy</td>
+					<td>Specifies a behavior on copy events.</td>
+					<td><input type="text" ng-copy="ngDirective.ngCopy=ngDirective.ngCopy + 1" value="Copy this text"></br>The text has been copied {{ngDirective.ngCopy}} times.</td>
+				</tr>
+				<tr>
+					<td>ng-csp</td>
+					<td>Changes the content security policy.</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>ng-cut</td>
+					<td>Specifies a behavior on cut events.</td>
+					<td><input type="text" ng-cut="ngDirective.ngCut=ngDirective.ngCut + 1" value="Cut this text"></br>The text has been cut {{ngDirective.ngCut}} times.</td>
+				</tr>
+				<tr>
+					<td>ng-dblclick</td>
+					<td>Specifies a behavior on double-click events.</td>
+					<td><button ng-dblclick="ngDirective.ngdblclick = ngDirective.ngdblclick + 1">Double Click</button></br>The button is double clicked {{ngDirective.ngdblclick}} times.</td>
+				</tr>
+				<tr>
+					<td>ng-disabled</td>
+					<td>Specifies if an element is disabled or not.</td>
+					<td>Click here to disable all the form fields:<input type="checkbox" ng-model="ngDirective.ngDisabled">
+						<br>
+						<input type="text" ng-disabled="ngDirective.ngDisabled">
+						<input type="radio" ng-disabled="ngDirective.ngDisabled">
+						<select ng-disabled="ngDirective.ngDisabled">
+							<option>Female</option>
+							<option>Male</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>ng-focus</td>
+					<td>Specifies a behavior on focus events.</td>
+					<td><input ng-focus="ngDirective.ngFocus = ngDirective.ngFocus + 1" /> {{ngDirective.ngFocus}} </br>the "count" increses every time the input field gets focus.</td>
+				</tr>
+				<tr><td>ng-form</td><td>Specifies an HTML form to inherit controls from.</td><td></td></tr>
+				<tr>
+					<td>ng-hide</td><td>Hides or shows HTML elements.</td>
+					<td>Hide 
+						<select ng-model="ngDirective.ngHide">
+							<option>Female</option>
+							<option>Male</option>
+						</select>
+						Button. Showing options: 
+						<button ng-hide="ngDirective.ngHide=='Female'" >Female</button><button ng-hide="ngDirective.ngHide=='Male'">Male</button>
+					</td>
+				</tr>
+				<tr>
+					<td>ng-href</td><td>Specifies a url for the <a> element.</td>
+					<td>Go to <a ng-href="{{ngDirective.ngHref}}">{{ngDirective.ngHref}}</a> Link</td>
+				</tr>
+				<tr>
+					<td>ng-if</td><td>Removes the HTML element if a condition is false.</td>
+					<td><input type="checkbox" ng-model="ngDirective.ngIf">Select Checkbox to see true button
+						<button ng-if="ngDirective.ngIf">True</button>
+					</td>
+				</tr>
+				<tr>
+					<td>ng-include</td><td>Includes HTML in an application.</td>
+					<td><div ng-include="'html/ngInclude.html'"></div>You can see error detail in console</td>
+				</tr>
+				<tr>
+					<td>ng-init</td><td>Defines initial values for an application.</td>
+					<td ng-init="ngDirective.ngInit = 'Hello Initialised variable using ng-init directive'" >{{ngDirective.ngInit}}</td>
+				</tr>
+				<tr><td>ng-jq</td><td>Specifies that the application must use a library, like jQuery.</td><td></td></tr>
+				<tr>
+					<td>ng-keydown</td><td>Specifies a behavior on keydown events.</td>
+					<td><input ng-keydown="ngDirective.ngKeyDown = ngDirective.ngKeyDown + 1" >
+					{{ngDirective.ngKeyDown}}</br>Increases the count on each key pressed </td>
+				</tr>
+				<tr>
+					<td>ng-keypress</td><td>Specifies a behavior on keypress events.</td>
+					<td><input ng-keypress="ngDirective.ngKeyPress = ngDirective.ngKeyPress + 1" >
+					{{ngDirective.ngKeyPress}}</br>Increases the count on only valid text key press </td>
+				</tr>
+				<tr>
+					<td>ng-keyup</td><td>Specifies a behavior on keyup events.</td>
+					<td><input ng-keyup="ngDirective.ngKeyUp = ngDirective.ngKeyUp + 1" >
+					{{ngDirective.ngKeyUp}}</br>Increases the count on each key released </td>
+				</tr>
+				<tr>
+					<td>ng-list</td><td>Converts text into a list (array).</td>
+					<td>Write some names in the input field, use a comma to separate them: </br><input ng-model="ngDirective.ngList" ng-list></br>{{ngDirective.ngList}}</td>
+				</tr>
+				<tr>
+					<td>ng-maxlength</td><td>Specifies the maximum number of characters allowed in the input field.</td>
+					<td>
+						<input type="text" name="maxLength" ng-model="ngDirective.ngMaxLength" ng-maxlength="5"></br>
+						<span ng-if="!ngDirectiveForm.maxLength.$valid">The text limit crossed the length 5</span></br>
+						{{ngDirective.ngMaxLength}}
+					</td>
+				</tr>
+				<tr>
+					<td>ng-minlength</td><td>Specifies the minimum number of characters allowed in the input field.</td>
+					<td>
+						<input type="text" name="minLength" ng-model="ngDirective.ngMinLength" ng-minlength="10"></br>
+						<span ng-if="!ngDirectiveForm.minLength.$valid">The text length is less than 10</span></br>
+						{{ngDirective.ngMinLength}}
+					</td>
+				</tr>
+				<tr >
+					<td>ng-model</td><td>Binds the value of HTML controls to application data.</td>
+					<td><input type="text" name="ngModel" ng-model="ngDirective.ngModel">{{ngDirective.ngModel}}</td>
+				</tr>
+				<tr ng-class="'tomato'"><td>ng-model-options</td><td>Specifies how updates in the model are done.</td><td></td></tr>
+				<tr>
+					<td>ng-mousedown</td><td>Specifies a behavior on mousedown events.</td>
+					<td>
+						<button ng-mousedown="ngDirective.ngMouseDown = ngDirective.ngMouseDown + 1">Click Me</button>
+						{{ngDirective.ngMouseDown}}</br>
+						The count increases every time a mouse button is clicked on the button element.
+					</td>
+				</tr>
+				<tr padding="5px">
+					<td >ng-mouseenter</td><td>Specifies a behavior on mouseenter events.</td>
+					<td padding="5px">
+						<button padding="5px" ng-mouseenter="ngDirective.ngMouseEnter = ngDirective.ngMouseEnter + 1" ng-init="ngDirective.ngMouseEnter = 0">MouseOver Me</button>
+						{{ngDirective.ngMouseEnter}}</br>
+						The count increases every time a mouse cursor enters from other element to the button element.
+					</td>
+				</tr>
+				<tr>
+					<td>ng-mouseleave</td><td>Specifies a behavior on mouseleave events.</td>
+					<td>
+						<button ng-mouseleave="ngDirective.ngMouseLeave = ngDirective.ngMouseLeave + 1" ng-init="ngDirective.ngMouseLeave = 0">Mouse over me! (and mouse away from me...)</button>
+						{{ngDirective.ngMouseLeave}}</br>
+						The count increases every time a mouse leaves the button element.
+					</td>
+				</tr>
+				<tr>
+					<td>ng-mousemove</td><td>Specifies a behavior on mousemove events.</td>
+					<td>
+						<button ng-mousemove="ngDirective.ngMouseMove = ngDirective.ngMouseMove + 1" ng-init="ngDirective.ngMouseMove = 0">Mouse over me!</button>
+						{{ngDirective.ngMouseMove}}</br>
+						The count increases every time a mouse cursor moves over the button element.
+					</td>
+				</tr>
+				<tr ng-class="'sky'">
+					<td>ng-mouseover</td><td>Specifies a behavior on mouseover events.</td>
+					<td>
+						<button ng-mouseover="ngDirective.ngMouseOver = ngDirective.ngMouseOver + 1" ng-init="ngDirective.ngMouseOver = 0">Mouse over me!</button>
+						{{ngDirective.ngMouseOver}}</br>
+						The count increases every time a mouse cursor enters the button element.
+					</td>
+				</tr>
+				<tr>
+					<td>ng-mouseup</td><td>Specifies a behavior on mouseup events.</td>
+					<td>
+						<button ng-mouseup="ngDirective.ngMouseUp = ngDirective.ngMouseUp + 1" ng-init="ngDirective.ngMouseUp = 0">Click me!</button>
+						{{ngDirective.ngMouseUp}}</br>
+						The count increases every time a mouse click on the button element is finished.
+					</td>
+				</tr>
+				<tr>
+					<td>ng-non-bindable</td><td>Specifies that no data binding can happen in this element, or its children.</td>
+					<td><span ng-non-bindable>{{5+5}}</span>={{5+5}}<br>Use the ng-non-bindable directive when you do not want AngularJS to compile or bind the content</td>
+				</tr>
+				<tr>
+					<td>ng-open</td><td>Specifies the open attribute of an element.</td>
+					<td></td>
+				</tr>
+				<tr><td>ng-options</td><td>Specifies <options> in a <select> list.</td><td></td></tr>
+				<tr><td>ng-paste</td><td>Specifies a behavior on paste events.</td><td></td></tr>
+				<tr><td>ng-pluralize</td><td>Specifies a message to display according to en-us localization rules.</td><td></td></tr>
+				<tr><td>ng-readonly</td><td>Specifies the readonly attribute of an element.</td><td></td></tr>
+				<tr><td>ng-repeat</td><td>Defines a template for each data in a collection.</td><td></td></tr>
+				<tr><td>ng-required</td><td>Specifies the required attribute of an element.</td><td></td></tr>
+				<tr><td>ng-selected</td><td>Specifies the selected attribute of an element.</td><td></td></tr>
+				<tr><td>ng-show</td><td>Shows or hides HTML elements.</td><td></td></tr>
+				<tr><td>ng-src</td><td>Specifies the src attribute for the <img> element.</td><td></td></tr>
+				<tr><td>ng-srcset</td><td>Specifies the srcset attribute for the <img> element.</td><td></td></tr>
+				<tr><td>ng-style</td><td>Specifies the style attribute for an element.</td><td></td></tr>
+				<tr><td>ng-submit</td><td>Specifies expressions to run on onsubmit events.</td><td></td></tr>
+				<tr><td>ng-switch</td><td>Specifies a condition that will be used to show/hide child elements.</td><td></td></tr>
+				<tr><td>ng-transclude</td><td>Specifies a point to insert transcluded elements.</td><td></td></tr>
+				<tr><td>ng-value</td><td>Specifies the value of an input element.</td><td></td></tr>
+			</tbody>
+		</table>
+		</form>
+	</div>
+</body>
 </html>
+
